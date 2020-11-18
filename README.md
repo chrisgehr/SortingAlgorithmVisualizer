@@ -1,2 +1,2 @@
 # SortingAlgorithmVisualizer
-A windows forms sorting visualize in C#.
+A windows forms sorting visualizer in C#.
