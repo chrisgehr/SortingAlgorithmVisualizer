@@ -171,8 +171,8 @@ namespace Algorithm_Visualizer
         public void SwapAndDraw(List<int> list, int a, int b)
         {
             // Override the current elements or their length stays in the canvas.
-            graphics.FillRectangle(new SolidBrush(Color.White), a * 10, 0 + canvas.Height - (list[a] * 4), 10, list[a] * 4);
-            graphics.FillRectangle(new SolidBrush(Color.White), (b) * 10, 0 + canvas.Height - (list[b] * 4), 10, list[b] * 4);
+            graphics.FillRectangle(new SolidBrush(Color.Lavender), a * 10, 0 + canvas.Height - (list[a] * 4), 10, list[a] * 4);
+            graphics.FillRectangle(new SolidBrush(Color.Lavender), (b) * 10, 0 + canvas.Height - (list[b] * 4), 10, list[b] * 4);
 
             int temp = list[a];
             

@@ -38,6 +38,7 @@ namespace Algorithm_Visualizer
             // 
             // shuffle
             // 
+            this.shuffle.BackColor = System.Drawing.Color.Lavender;
             this.shuffle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.shuffle.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shuffle.Location = new System.Drawing.Point(0, 1);
@@ -45,11 +46,12 @@ namespace Algorithm_Visualizer
             this.shuffle.Size = new System.Drawing.Size(403, 34);
             this.shuffle.TabIndex = 0;
             this.shuffle.Text = "Shuffle";
-            this.shuffle.UseVisualStyleBackColor = true;
+            this.shuffle.UseVisualStyleBackColor = false;
             this.shuffle.Click += new System.EventHandler(this.shuffle_Click);
             // 
             // sort
             // 
+            this.sort.BackColor = System.Drawing.Color.Lavender;
             this.sort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sort.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sort.Location = new System.Drawing.Point(400, 1);
@@ -57,11 +59,12 @@ namespace Algorithm_Visualizer
             this.sort.Size = new System.Drawing.Size(400, 34);
             this.sort.TabIndex = 1;
             this.sort.Text = "Sort";
-            this.sort.UseVisualStyleBackColor = true;
+            this.sort.UseVisualStyleBackColor = false;
             this.sort.Click += new System.EventHandler(this.sort_Click);
             // 
             // canvas
             // 
+            this.canvas.BackColor = System.Drawing.Color.Lavender;
             this.canvas.Location = new System.Drawing.Point(0, 68);
             this.canvas.Name = "canvas";
             this.canvas.Size = new System.Drawing.Size(800, 339);
@@ -70,7 +73,9 @@ namespace Algorithm_Visualizer
             // 
             // AlgorithmChoice
             // 
+            this.AlgorithmChoice.BackColor = System.Drawing.Color.Lavender;
             this.AlgorithmChoice.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AlgorithmChoice.ForeColor = System.Drawing.SystemColors.WindowText;
             this.AlgorithmChoice.FormattingEnabled = true;
             this.AlgorithmChoice.ItemHeight = 30;
             this.AlgorithmChoice.Items.AddRange(new object[] {
@@ -93,7 +98,7 @@ namespace Algorithm_Visualizer
             this.Controls.Add(this.sort);
             this.Controls.Add(this.shuffle);
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "Sorting Algorithm Visualizer";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.canvas)).EndInit();
             this.ResumeLayout(false);

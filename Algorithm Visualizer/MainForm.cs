@@ -35,7 +35,6 @@ namespace Algorithm_Visualizer
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            
             gObject = canvas.CreateGraphics();
             model = new Model(gObject, canvas);
             AlgorithmChoice.SelectedIndex = 0;
