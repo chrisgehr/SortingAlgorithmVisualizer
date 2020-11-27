@@ -146,6 +146,59 @@ namespace Algorithm_Visualizer
         }
 
         /// <summary>
+        /// HeapSort Sorting Algorithm. Uses heapify.
+        /// </summary>
+        /// <param name="list"></param>
+        public void HeapSort(List<int> list)
+        {
+            int length = list.Count;
+
+            // Build up the heap.
+            for(int i = length / 2 - 1; i >= 0; i--)
+            {
+                heapify(list, length, i);
+            }
+
+            // The top element of the heap is the biggest. This it gets swapped with the last position and ignored in the later steps.
+            for(int i = length - 1; i > 0; i--)
+            {
+                SwapAndDraw(list, 0, i);
+
+                // Heapify applied to the reduced heap.
+                heapify(list, i, 0);
+            }
+
+        }
+
+        public void heapify(List<int> list, int length, int i)
+        {
+            // Assume the root is the biggest element.
+            int biggest = i;
+
+            // Logic to simulate a binary tree in an array.
+            int left = 2 * i + 1;
+            int right = 2 * i + 2;
+
+            if(left < length && list[left] > list[biggest])
+            {
+                biggest = left;
+            }
+
+            if(right < length && list[right] > list[biggest])
+            {
+                biggest = right;
+            }
+
+            if(biggest != i)
+            {
+                SwapAndDrawHeapify(list, i, biggest);
+                
+                // Also change subtree.
+                heapify(list, length, biggest);
+            }
+        }
+
+        /// <summary>
         /// Draws the shuffled list.
         /// </summary>
         public void DrawShuffledList()
@@ -181,6 +234,35 @@ namespace Algorithm_Visualizer
             
             list[b] = temp;
             graphics.FillRectangle(new SolidBrush(Color.Red), (b) * 10, 0 + canvas.Height - (list[b] * 4), 10, list[b] * 4);
+
+            // Sleep for visualization.
+            Thread.Sleep(1);
+
+            // After waiting paint them black again.
+            graphics.FillRectangle(new SolidBrush(Color.Black), a * 10, 0 + canvas.Height - (list[a] * 4), 10, list[a] * 4);
+            graphics.FillRectangle(new SolidBrush(Color.Black), b * 10, 0 + canvas.Height - (list[b] * 4), 10, list[b] * 4);
+        }
+
+
+        /// <summary>
+        /// An extra swap function for heapify, to use different colors.
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        public void SwapAndDrawHeapify(List<int> list, int a, int b)
+        {
+            // Override the current elements or their length stays in the canvas.
+            graphics.FillRectangle(new SolidBrush(Color.Lavender), a * 10, 0 + canvas.Height - (list[a] * 4), 10, list[a] * 4);
+            graphics.FillRectangle(new SolidBrush(Color.Lavender), (b) * 10, 0 + canvas.Height - (list[b] * 4), 10, list[b] * 4);
+
+            int temp = list[a];
+
+            list[a] = list[b];
+            graphics.FillRectangle(new SolidBrush(Color.Blue), a * 10, 0 + canvas.Height - (list[a] * 4), 10, list[a] * 4);
+
+            list[b] = temp;
+            graphics.FillRectangle(new SolidBrush(Color.Blue), (b) * 10, 0 + canvas.Height - (list[b] * 4), 10, list[b] * 4);
 
             // Sleep for visualization.
             Thread.Sleep(1);

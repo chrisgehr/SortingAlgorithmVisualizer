@@ -73,7 +73,7 @@ namespace Algorithm_Visualizer
             // 
             // AlgorithmChoice
             // 
-            this.AlgorithmChoice.BackColor = System.Drawing.Color.Lavender;
+            this.AlgorithmChoice.BackColor = System.Drawing.Color.White;
             this.AlgorithmChoice.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AlgorithmChoice.ForeColor = System.Drawing.SystemColors.WindowText;
             this.AlgorithmChoice.FormattingEnabled = true;
@@ -81,7 +81,8 @@ namespace Algorithm_Visualizer
             this.AlgorithmChoice.Items.AddRange(new object[] {
             "Bubble Sort",
             "Quick Sort",
-            "Insertion Sort"});
+            "Insertion Sort",
+            "Heap Sort"});
             this.AlgorithmChoice.Location = new System.Drawing.Point(0, 32);
             this.AlgorithmChoice.Name = "AlgorithmChoice";
             this.AlgorithmChoice.Size = new System.Drawing.Size(800, 38);

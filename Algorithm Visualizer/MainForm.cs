@@ -63,6 +63,9 @@ namespace Algorithm_Visualizer
                 case "Insertion Sort":
                     model.InsertionSort(model.integers);
                     break;
+                case "Heap Sort":
+                    model.HeapSort(model.integers);
+                    break;
                 default:
                     break;
             }
