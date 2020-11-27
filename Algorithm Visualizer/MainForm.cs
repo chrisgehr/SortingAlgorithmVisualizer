@@ -72,5 +72,12 @@ namespace Algorithm_Visualizer
 
         }
 
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (thread1 != null)
+            {
+                thread1.Abort();
+            }
+        }
     }
 }

@@ -100,6 +100,7 @@ namespace Algorithm_Visualizer
             this.Controls.Add(this.shuffle);
             this.Name = "MainForm";
             this.Text = "Sorting Algorithm Visualizer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.canvas)).EndInit();
             this.ResumeLayout(false);

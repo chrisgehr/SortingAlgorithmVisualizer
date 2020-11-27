@@ -34,7 +34,7 @@ namespace Algorithm_Visualizer
         /// <summary>
         /// Fisher-Yates styled shuffle algorithm to avoid bias
         /// </summary>
-        /// <param name="list"></param>
+        /// <param name="list">The array to be shuffled.</param>
         /// <returns></returns>
         public List<int> Shuffle(List<int> list)
         {
@@ -53,7 +53,7 @@ namespace Algorithm_Visualizer
         /// <summary>
         /// Simple bubble sort with end condition, when inner loop does not swap.
         /// </summary>
-        /// <param name="list"></param>
+        /// <param name="list">The array to be sorted.</param>
         public void BubbleSort(List<int> list)
         {
             bool swapped;
@@ -77,45 +77,45 @@ namespace Algorithm_Visualizer
         /// <summary>
         /// Quick sort algorithm, calling partition function + recursion.
         /// </summary>
-        /// <param name="array"></param>
-        /// <param name="start"></param>
-        /// <param name="end"></param>
-        public void QuickSort(List<int> array, int start, int end)
+        /// <param name="list">The array to be sorted.</param>
+        /// <param name="start">Startpoint.</param>
+        /// <param name="end">Endpoint.</param>
+        public void QuickSort(List<int> list, int start, int end)
         {
             if(start < end)
             {
-                int partitionIndex = Partition(array, start, end);
+                int partitionIndex = Partition(list, start, end);
 
-                QuickSort(array, start, partitionIndex - 1);
-                QuickSort(array, partitionIndex + 1, end);
+                QuickSort(list, start, partitionIndex - 1);
+                QuickSort(list, partitionIndex + 1, end);
             }
         }
 
         /// <summary>
         /// Partition function of quick sort.
         /// </summary>
-        /// <param name="array"></param>
-        /// <param name="start"></param>
-        /// <param name="end"></param>
+        /// <param name="list">The array to be sorted.</param>
+        /// <param name="start">Startpoint.</param>
+        /// <param name="end">Endpoint.</param>
         /// <returns></returns>
-        public int Partition(List<int> array, int start, int end)
+        public int Partition(List<int> list, int start, int end)
         {
             //Selecting pivot.
-            int pivot = array[end];
+            int pivot = list[end];
 
             int pivotIndex = start;
 
             //Reorder.
             for (int i = start; i < end; i++)
             {
-                if (array[i] < pivot)
+                if (list[i] < pivot)
                 {
-                    SwapAndDraw(array, pivotIndex, i);
+                    SwapAndDraw(list, pivotIndex, i);
                     pivotIndex++;
                 }
             }
 
-            SwapAndDraw(array, pivotIndex, end);
+            SwapAndDraw(list, pivotIndex, end);
 
             return pivotIndex;
         }
@@ -123,7 +123,7 @@ namespace Algorithm_Visualizer
         /// <summary>
         /// Insertion sort algorithm.
         /// </summary>
-        /// <param name="list"></param>
+        /// <param name="list">The array to be sorted.</param>
         public void InsertionSort(List<int> list)
         {
             for(int i = 1; i < list.Count; i++)
@@ -148,7 +148,7 @@ namespace Algorithm_Visualizer
         /// <summary>
         /// HeapSort Sorting Algorithm. Uses heapify.
         /// </summary>
-        /// <param name="list"></param>
+        /// <param name="list">The array to be sorted.</param>
         public void HeapSort(List<int> list)
         {
             int length = list.Count;
@@ -170,6 +170,12 @@ namespace Algorithm_Visualizer
 
         }
 
+        /// <summary>
+        /// Creates the max heap needed for heap sorting.
+        /// </summary>
+        /// <param name="list">The array for the heap sort.</param>
+        /// <param name="length">The length of the remaining heap.</param>
+        /// <param name="i">Root of the heap.</param>
         public void heapify(List<int> list, int length, int i)
         {
             // Assume the root is the biggest element.
@@ -218,9 +224,9 @@ namespace Algorithm_Visualizer
         /// <summary>
         /// Executes the swapping + added swap logic.
         /// </summary>
-        /// <param name="list"></param>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
+        /// <param name="list">The array that needs swap function.</param>
+        /// <param name="a">First element to be swapped.</param>
+        /// <param name="b">Second element to be swapped.</param>
         public void SwapAndDraw(List<int> list, int a, int b)
         {
             // Override the current elements or their length stays in the canvas.
@@ -247,9 +253,9 @@ namespace Algorithm_Visualizer
         /// <summary>
         /// An extra swap function for heapify, to use different colors.
         /// </summary>
-        /// <param name="list"></param>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
+        /// <param name="list">The array that needs swap function.</param>
+        /// <param name="a">First element to be swapped.</param>
+        /// <param name="b">Second element to be swapped.</param>
         public void SwapAndDrawHeapify(List<int> list, int a, int b)
         {
             // Override the current elements or their length stays in the canvas.
@@ -265,7 +271,7 @@ namespace Algorithm_Visualizer
             graphics.FillRectangle(new SolidBrush(Color.Blue), (b) * 10, 0 + canvas.Height - (list[b] * 4), 10, list[b] * 4);
 
             // Sleep for visualization.
-            Thread.Sleep(1);
+            Thread.Sleep(10);
 
             // After waiting paint them black again.
             graphics.FillRectangle(new SolidBrush(Color.Black), a * 10, 0 + canvas.Height - (list[a] * 4), 10, list[a] * 4);
