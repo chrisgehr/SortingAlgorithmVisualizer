@@ -96,6 +96,7 @@ namespace Algorithm_Visualizer
 
         /// <summary>
         /// Partition function of quick sort.
+        /// Orders the list based on a pivot element.
         /// </summary>
         /// <param name="list">The array to be sorted.</param>
         /// <param name="start">Startpoint.</param>
@@ -332,10 +333,9 @@ namespace Algorithm_Visualizer
             
             list[a] = list[b];
 
-            graphics.FillRectangle(new SolidBrush(Color.Red), a * 10, 0 + canvas.Height - (list[a] * 4), 10, list[a] * 4);
-            
             list[b] = temp;
 
+            graphics.FillRectangle(new SolidBrush(Color.Red), a * 10, 0 + canvas.Height - (list[a] * 4), 10, list[a] * 4);
             graphics.FillRectangle(new SolidBrush(Color.Red), (b) * 10, 0 + canvas.Height - (list[b] * 4), 10, list[b] * 4);
 
             // Sleep for visualization.
@@ -363,10 +363,9 @@ namespace Algorithm_Visualizer
 
             list[a] = list[b];
 
-            graphics.FillRectangle(new SolidBrush(Color.Blue), a * 10, 0 + canvas.Height - (list[a] * 4), 10, list[a] * 4);
-
             list[b] = temp;
 
+            graphics.FillRectangle(new SolidBrush(Color.Blue), a * 10, 0 + canvas.Height - (list[a] * 4), 10, list[a] * 4);
             graphics.FillRectangle(new SolidBrush(Color.Blue), (b) * 10, 0 + canvas.Height - (list[b] * 4), 10, list[b] * 4);
 
             // Sleep for visualization.
