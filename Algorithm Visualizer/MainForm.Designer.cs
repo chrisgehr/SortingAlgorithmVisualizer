@@ -82,7 +82,8 @@ namespace Algorithm_Visualizer
             "Bubble Sort",
             "Quick Sort",
             "Insertion Sort",
-            "Heap Sort"});
+            "Heap Sort",
+            "Merge Sort"});
             this.AlgorithmChoice.Location = new System.Drawing.Point(0, 32);
             this.AlgorithmChoice.Name = "AlgorithmChoice";
             this.AlgorithmChoice.Size = new System.Drawing.Size(800, 38);

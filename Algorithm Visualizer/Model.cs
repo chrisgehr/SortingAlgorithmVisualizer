@@ -50,6 +50,7 @@ namespace Algorithm_Visualizer
             return list;
         }
 
+
         /// <summary>
         /// Simple bubble sort with end condition, when inner loop does not swap.
         /// </summary>
@@ -74,6 +75,7 @@ namespace Algorithm_Visualizer
             }
         }
 
+
         /// <summary>
         /// Quick sort algorithm, calling partition function + recursion.
         /// </summary>
@@ -91,6 +93,7 @@ namespace Algorithm_Visualizer
             }
         }
 
+
         /// <summary>
         /// Partition function of quick sort.
         /// </summary>
@@ -100,12 +103,12 @@ namespace Algorithm_Visualizer
         /// <returns></returns>
         public int Partition(List<int> list, int start, int end)
         {
-            //Selecting pivot.
+            // Selecting pivot.
             int pivot = list[end];
 
             int pivotIndex = start;
 
-            //Reorder.
+            // Reorder.
             for (int i = start; i < end; i++)
             {
                 if (list[i] < pivot)
@@ -119,6 +122,7 @@ namespace Algorithm_Visualizer
 
             return pivotIndex;
         }
+
 
         /// <summary>
         /// Insertion sort algorithm.
@@ -145,6 +149,7 @@ namespace Algorithm_Visualizer
             }
         }
 
+
         /// <summary>
         /// HeapSort Sorting Algorithm. Uses heapify.
         /// </summary>
@@ -169,6 +174,7 @@ namespace Algorithm_Visualizer
             }
 
         }
+
 
         /// <summary>
         /// Creates the max heap needed for heap sorting.
@@ -204,6 +210,95 @@ namespace Algorithm_Visualizer
             }
         }
 
+
+        /// <summary>
+        /// The Merge function of the MergeSort Algorithm. Merges the smaller arrays.
+        /// The smaller arrays go from left to middle and from middle to right.
+        /// </summary>
+        /// <param name="list">The array.</param>
+        /// <param name="left">Implying position of smaller array.</param>
+        /// <param name="middle">Middle dividing the 2 arrays.</param>
+        /// <param name="right">End of right half.</param>
+        void Merge(List<int> list, int left, int middle, int right)
+        {
+            // Calculate the size of the temporary arrays.
+            int n1 = middle - left + 1;
+            int n2 = right - middle;
+
+            // Create temporary arrays.
+            List<int> L = new List<int>(n1);
+            List<int> R = new List<int>(n2);
+            int i, j;
+
+            // Copy data to temporary arrays.
+            for (i = 0; i < n1; i++)
+                L.Add(list[left + i]);
+            for (j = 0; j < n2; j++)
+                R.Add(list[middle + 1 + j]);
+
+            // Initial indexes.
+            i = 0;
+            j = 0;
+
+            // Initial index of merged array.
+            int k = left;
+
+            while (i < n1 && j < n2)
+            {
+                if (L[i] <= R[j])
+                {
+                    ChangeAndDraw(list, k, L[i]);
+                    i++;
+                }
+                else
+                {
+                    ChangeAndDraw(list, k, R[j]);
+                    j++;
+                }
+                k++;
+            }
+
+            // Copy remaining elements.
+            while (i < n1)
+            {
+                ChangeAndDraw(list, k, L[i]);
+                i++;
+                k++;
+            }
+
+            // Copy remaining elements.
+            while (j < n2)
+            {
+                ChangeAndDraw(list, k, R[j]);
+                j++;
+                k++;
+            }
+        }
+
+
+        /// <summary>
+        /// The main MergeSort function that calls itself recursively and merges.
+        /// </summary>
+        /// <param name="list">The array to be sorted.</param>
+        /// <param name="left">Beginning of array.</param>
+        /// <param name="right">End of array.</param>
+        public void MergeSort(List<int> list, int left, int right)
+        {
+            if (left < right)
+            {
+                // Find the middle.
+                int middle = (left + right) / 2;
+
+                // Keep on sorting in smaller arrays.
+                MergeSort(list, left, middle);
+                MergeSort(list, middle + 1, right);
+
+                // Merge the sorted halves.
+                Merge(list, left, middle, right);
+            }
+        }
+
+
         /// <summary>
         /// Draws the shuffled list.
         /// </summary>
@@ -236,9 +331,11 @@ namespace Algorithm_Visualizer
             int temp = list[a];
             
             list[a] = list[b];
+
             graphics.FillRectangle(new SolidBrush(Color.Red), a * 10, 0 + canvas.Height - (list[a] * 4), 10, list[a] * 4);
             
             list[b] = temp;
+
             graphics.FillRectangle(new SolidBrush(Color.Red), (b) * 10, 0 + canvas.Height - (list[b] * 4), 10, list[b] * 4);
 
             // Sleep for visualization.
@@ -265,9 +362,11 @@ namespace Algorithm_Visualizer
             int temp = list[a];
 
             list[a] = list[b];
+
             graphics.FillRectangle(new SolidBrush(Color.Blue), a * 10, 0 + canvas.Height - (list[a] * 4), 10, list[a] * 4);
 
             list[b] = temp;
+
             graphics.FillRectangle(new SolidBrush(Color.Blue), (b) * 10, 0 + canvas.Height - (list[b] * 4), 10, list[b] * 4);
 
             // Sleep for visualization.
@@ -276,6 +375,26 @@ namespace Algorithm_Visualizer
             // After waiting paint them black again.
             graphics.FillRectangle(new SolidBrush(Color.Black), a * 10, 0 + canvas.Height - (list[a] * 4), 10, list[a] * 4);
             graphics.FillRectangle(new SolidBrush(Color.Black), b * 10, 0 + canvas.Height - (list[b] * 4), 10, list[b] * 4);
+        }
+
+
+        /// <summary>
+        /// An extra change function that also draws the change.
+        /// </summary>
+        /// <param name="list">The list in which the change is to happen.</param>
+        /// <param name="index">The index of the element to be changed.</param>
+        /// <param name="value">The new value.</param>
+        public void ChangeAndDraw(List<int> list, int index, int value)
+        {
+            graphics.FillRectangle(new SolidBrush(Color.Lavender), index * 10, 0 + canvas.Height - (list[index] * 4), 10, list[index] * 4);
+
+            list[index] = value;
+
+            graphics.FillRectangle(new SolidBrush(Color.Red), index * 10, 0 + canvas.Height - (list[index] * 4), 10, list[index] * 4);
+
+            Thread.Sleep(10);
+
+            graphics.FillRectangle(new SolidBrush(Color.Black), index * 10, 0 + canvas.Height - (list[index] * 4), 10, list[index] * 4);
         }
     }
 }

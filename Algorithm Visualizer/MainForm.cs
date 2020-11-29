@@ -66,6 +66,9 @@ namespace Algorithm_Visualizer
                 case "Heap Sort":
                     model.HeapSort(model.integers);
                     break;
+                case "Merge Sort":
+                    model.MergeSort(model.integers, 0, model.integers.Count - 1);
+                    break;
                 default:
                     break;
             }
